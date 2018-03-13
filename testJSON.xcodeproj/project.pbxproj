@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CEAE09102057D8EE00DDDEE8 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE090F2057D8EE00DDDEE8 /* DescriptionViewController.swift */; };
+		CEAE09122057D90900DDDEE8 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE09112057D90900DDDEE8 /* NewsTableViewController.swift */; };
 		CECF15DB202099A900B9B702 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF15DA202099A900B9B702 /* AppDelegate.swift */; };
 		CECF15DD202099A900B9B702 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF15DC202099A900B9B702 /* ViewController.swift */; };
 		CECF15E0202099A900B9B702 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECF15DE202099A900B9B702 /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CEAE090F2057D8EE00DDDEE8 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
+		CEAE09112057D90900DDDEE8 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		CECF15D7202099A900B9B702 /* testJSON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testJSON.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECF15DA202099A900B9B702 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECF15DC202099A900B9B702 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 				CECF15E1202099A900B9B702 /* Assets.xcassets */,
 				CECF15E3202099A900B9B702 /* LaunchScreen.storyboard */,
 				CECF15E6202099A900B9B702 /* Info.plist */,
+				CEAE090F2057D8EE00DDDEE8 /* DescriptionViewController.swift */,
+				CEAE09112057D90900DDDEE8 /* NewsTableViewController.swift */,
 			);
 			path = testJSON;
 			sourceTree = "<group>";
@@ -263,7 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CECF15DD202099A900B9B702 /* ViewController.swift in Sources */,
+				CEAE09102057D8EE00DDDEE8 /* DescriptionViewController.swift in Sources */,
 				CECF15DB202099A900B9B702 /* AppDelegate.swift in Sources */,
+				CEAE09122057D90900DDDEE8 /* NewsTableViewController.swift in Sources */,
 				CECF1609202099DE00B9B702 /* JSONStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

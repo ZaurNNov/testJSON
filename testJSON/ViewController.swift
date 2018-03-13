@@ -18,11 +18,9 @@ class ViewController: UIViewController {
     
     @IBAction func getAction(_ sender: UIButton) {
         getFunc()
-        
     }
     
     @IBAction func postAction(_ sender: UIButton) {
-        
         
     }
     
@@ -30,7 +28,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         getFunc()
-
     }
     
     func getFunc() {
@@ -43,7 +40,7 @@ class ViewController: UIViewController {
                 //let news = try JSONSerialization.jsonObject(with: data, options: [])
                 //print(news)
                 
-                let new = try JSONDecoder().decode([News].self, from: data)
+                let new = try JSONDecoder().decode(News.self, from: data)
                 print("\(new)")
                 
                 
