@@ -14,13 +14,13 @@ struct News: Decodable {
 //"payload":[]
     var resultCode: String
     var trackingId: String
-    var playload: Array<Playloads>?
+    var playload: Playloads?
     
     init?(json: [String: AnyHashable]) {
         guard
             let resultCode = json["resultCode"] as? String,
             let trackingId = json["trackingId"] as? String,
-            let playload = json["playload"] as? Array<Playloads> else { return nil }
+            let playload = json["playload"] as? Playloads else { return nil }
         self.resultCode = resultCode
         self.trackingId = trackingId
         self.playload = playload
@@ -38,7 +38,7 @@ struct Playloads: Decodable {
     var id: String
     var name: String
     var text: String
-    var publicationDate: [DateInMilliseconds]
+    var publicationDate: DateInMilliseconds
     var bankInfoTypeId: Int
     
     init?(json: [String: AnyHashable]) {
@@ -47,7 +47,7 @@ struct Playloads: Decodable {
             let name = json["name"] as? String,
             let text = json["text"] as? String,
             let bankInfoTypeId = json["bankInfoTypeId"] as? Int,
-            let publicationDate = json["publicationDate"] as? [DateInMilliseconds] else { return nil }
+            let publicationDate = json["publicationDate"] as? DateInMilliseconds else { return nil }
         
         self.id = id
         self.name = name
