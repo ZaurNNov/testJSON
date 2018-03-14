@@ -17,7 +17,7 @@ class DescriptionViewController: UIViewController {
     
     var payload: Payloads?
     
-    var jname: String = "tinkoff-bank-x-mir"
+    var jname: String = "07122017-tinkoff-x-insurance"
     var jtext: String = "Тинькофф Банк вносит изменения в&nbsp;тарифы по&nbsp;кредитам на&nbsp;покупку"
     var milliseconds = Double(0000000000001)
 //    var id = Int(0)
@@ -25,21 +25,24 @@ class DescriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        publicationDate.text = publicationDateInString(millisec: (payload?.publicationDate.milliseconds ?? milliseconds))
-        name.text = (payload?.name ?? jname)
-        text.loadHTMLString(payload?.text ?? jtext, baseURL: nil)
         
-//        publicationDate.text = publicationDateInString(millisec: milliseconds)
-//        name.text = jname
-//        text.loadHTMLString(jtext.localizedUppercase, baseURL: nil)
+        if let structur = payload {
+            name.text = QprepareNameString(string: structur.name)
+            publicationDate.text = publicationDateInString(millisec: structur.publicationDate.milliseconds)
+            text.loadHTMLString(structur.text, baseURL: nil)
+        }
+    }
+    
+    func QprepareNameString(string: String) -> String {
+        let newString = string.replacingOccurrences(of: "-", with: " ", options: .numeric, range: nil)
+        
+        return newString
     }
     
     func publicationDateInString(millisec: Double) -> String {
-        let date = Date(timeIntervalSince1970:(millisec))
-        let dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = Date(timeIntervalSince1970:(millisec/1000))
         let dateFormatter = DateFormatter.init()
-        dateFormatter.dateFormat = dateFormat
+        dateFormatter.dateStyle = .medium
         let printDate = dateFormatter.string(from: date)
         print(printDate)
         return printDate
