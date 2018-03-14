@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -111,104 +112,65 @@
             </objects>
             <point key="canvasLocation" x="1300" y="117.39130434782609"/>
         </scene>
-        <!--Description View Controller-->
-        <scene sceneID="BB4-2C-bVd">
-            <objects>
-                <viewController id="aCX-QM-5kA" customClass="DescriptionViewController" customModule="testJSON" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oW1-OH-NyU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gya-cw-A6y">
-                                <rect key="frame" x="16" y="64" width="343" height="50"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="bSa-UU-MCr">
-                                <rect key="frame" x="16" y="122" width="343" height="55"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <wkWebView contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T6A-sh-CZK">
-                                <rect key="frame" x="16" y="185" width="343" height="462"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration" allowsAirPlayForMediaPlayback="NO" allowsPictureInPictureMediaPlayback="NO">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences" minimumFontSize="10"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="gya-cw-A6y" firstAttribute="centerX" secondItem="sPz-eZ-Kpx" secondAttribute="centerX" id="19b-NT-YZ0"/>
-                            <constraint firstItem="gya-cw-A6y" firstAttribute="top" secondItem="sPz-eZ-Kpx" secondAttribute="top" id="jDN-2F-fhh"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="sPz-eZ-Kpx"/>
-                    </view>
-                    <connections>
-                        <outlet property="name" destination="bSa-UU-MCr" id="Syi-pK-CpI"/>
-                        <outlet property="publicationDate" destination="gya-cw-A6y" id="url-pF-orC"/>
-                        <outlet property="text" destination="T6A-sh-CZK" id="eAD-Wb-A0i"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="049-0a-gCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2089" y="-288"/>
-        </scene>
         <!--Body News View Controller-->
         <scene sceneID="rwS-6s-Oi0">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gtd-eB-CBP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="gUj-mj-5JJ" customClass="BodyNewsViewController" customModule="testJSON" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cib-fl-Pfc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cmn-ej-HK7">
-                                <rect key="frame" x="16" y="124" width="343" height="35"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="hpi-cH-XNz">
-                                <rect key="frame" x="16" y="64" width="343" height="43"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="hpi-cH-XNz">
+                                <rect key="frame" x="16" y="64" width="343" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="jGk-Xd-QpB"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="VBZ-k3-Sya">
-                                <rect key="frame" x="16" y="189" width="343" height="458"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <mutableString key="content">&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;em&amp;gt;Москва, Россия&amp;amp;nbsp;&amp;amp;mdash; 10&amp;amp;nbsp;июня 2014&amp;amp;nbsp;г.&amp;lt;/em&amp;gt;&amp;lt;/strong&amp;gt; С&amp;amp;nbsp;9&amp;amp;nbsp;июня по&amp;amp;nbsp;31&amp;amp;nbsp;августа 2014 года банк &amp;amp;laquo;Тинькофф Кредитные Системы&amp;amp;raquo; совместно с&amp;amp;nbsp;онлайн-магазином приложений и&amp;amp;nbsp;цифрового контента компании Google&amp;amp;nbsp;&amp;amp;mdash; Google Play&amp;amp;nbsp;&amp;amp;mdash; проводит специальную акцию, в&amp;amp;nbsp;рамках которой&amp;amp;nbsp;25% от&amp;amp;nbsp;суммы покупок в&amp;amp;nbsp;Google Play возвращаются в&amp;amp;nbsp;баллах всем владельцам кредитной карты Tinkoff Platinum.&amp;lt;/p&amp;gt;\n&amp;lt;p&amp;gt;Каждый держатель кредитной карты Tinkoff Platinum, участник программы лояльности &amp;amp;laquo;Браво&amp;amp;raquo;, получит&amp;amp;nbsp;25% от&amp;amp;nbsp;суммы покупок в&amp;amp;nbsp;Google Play в&amp;amp;nbsp;баллах. Накопленные баллы &amp;amp;laquo;Браво&amp;amp;raquo; можно обменять на&amp;amp;nbsp;бесплатный контент в&amp;amp;nbsp;магазине приложений Google Play, предлагающий более миллиона увлекательных игр и&amp;amp;nbsp;приложений для владельцев устройств с&amp;amp;nbsp;операционной системой Android, а&amp;amp;nbsp;также миллионы музыкальных треков и&amp;amp;nbsp;обширную коллекцию книг и&amp;amp;nbsp;художественных фильмов. Компенсировать покупки за&amp;amp;nbsp;счет баллов можно напрямую из&amp;amp;nbsp;интернет-банка и/или мобильного приложения банка &amp;amp;laquo;Тинькофф Кредитные Системы&amp;amp;raquo;.&amp;lt;/p&amp;gt;\n&amp;lt;p&amp;gt;В&amp;amp;nbsp;акции могут принять участие держатели кредитных карт Tinkoff Platinum, а&amp;amp;nbsp;также клиенты, впервые заказавшие себе такую карту в&amp;amp;nbsp;ТКС Банке в&amp;amp;nbsp;период акции.&amp;lt;/p&amp;gt;</mutableString>
-                                        <attributes>
-                                            <color key="NSColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="15" name="LucidaGrande"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                            <wkWebView contentMode="TopLeft" translatesAutoresizingMaskIntoConstraints="NO" id="Ss6-WZ-DfC">
+                                <rect key="frame" x="16" y="194" width="343" height="453"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cmn-ej-HK7">
+                                <rect key="frame" x="16" y="124" width="343" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="Xth-Xh-9wf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ss6-WZ-DfC" firstAttribute="top" secondItem="Cmn-ej-HK7" secondAttribute="bottom" constant="29" id="6Jl-n4-W2H"/>
+                            <constraint firstItem="hpi-cH-XNz" firstAttribute="top" secondItem="ZSD-So-oN4" secondAttribute="top" id="9tz-0m-HGy"/>
+                            <constraint firstItem="Cmn-ej-HK7" firstAttribute="leading" secondItem="Ss6-WZ-DfC" secondAttribute="leading" id="HCz-2X-e1O"/>
+                            <constraint firstItem="Cmn-ej-HK7" firstAttribute="trailing" secondItem="Ss6-WZ-DfC" secondAttribute="trailing" id="Lul-uS-gtT"/>
+                            <constraint firstItem="hpi-cH-XNz" firstAttribute="leading" secondItem="Cmn-ej-HK7" secondAttribute="leading" id="Nzu-dJ-f8c"/>
+                            <constraint firstItem="hpi-cH-XNz" firstAttribute="leading" secondItem="Cib-fl-Pfc" secondAttribute="leadingMargin" id="Ryf-ZD-tH9"/>
+                            <constraint firstItem="hpi-cH-XNz" firstAttribute="trailing" secondItem="Cib-fl-Pfc" secondAttribute="trailingMargin" id="ZqH-bq-8oR"/>
+                            <constraint firstAttribute="bottom" secondItem="Ss6-WZ-DfC" secondAttribute="bottom" constant="20" symbolic="YES" id="ceG-oS-lPb"/>
+                            <constraint firstItem="Cmn-ej-HK7" firstAttribute="top" secondItem="hpi-cH-XNz" secondAttribute="bottom" constant="8" symbolic="YES" id="ps1-67-v2I"/>
+                            <constraint firstItem="hpi-cH-XNz" firstAttribute="trailing" secondItem="Cmn-ej-HK7" secondAttribute="trailing" id="xJ4-Bn-Q1L"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ZSD-So-oN4"/>
                     </view>
                     <connections>
-                        <outlet property="BodyNewsText" destination="VBZ-k3-Sya" id="2om-Zv-SVl"/>
+                        <outlet property="BodyNewsText" destination="Ss6-WZ-DfC" id="zJh-jg-dOI"/>
                         <outlet property="BodySecondTitle" destination="Cmn-ej-HK7" id="Vaq-Jp-2zS"/>
                         <outlet property="BodyTitle" destination="hpi-cH-XNz" id="BL3-99-RTT"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gtd-eB-CBP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2088.8000000000002" y="394.45277361319341"/>
+            <point key="canvasLocation" x="2077.5999999999999" y="116.49175412293854"/>
         </scene>
         <!--StartHere-->
         <scene sceneID="UuO-Jz-cX3">

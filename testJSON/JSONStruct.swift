@@ -8,6 +8,8 @@
 
 import Foundation
 
+// "https://api.tinkoff.ru/v1/news"
+
 struct News: Decodable {
 //"resultCode":"OK",
 //"trackingId":"58479826241"
@@ -15,16 +17,6 @@ struct News: Decodable {
     var resultCode: String = ""
     var trackingId: String = ""
     var payload: [Payloads] = []
-    
-//    init?(json: [String: AnyHashable]) {
-//        guard
-//            let resultCode = json["resultCode"] as? String,
-//            let trackingId = json["trackingId"] as? String,
-//            let payload = json["payload"] as? [Payloads] else { return nil }
-//        self.resultCode = resultCode
-//        self.trackingId = trackingId
-//        self.payload = payload
-//    }
 }
 
 struct Payloads: Decodable {
@@ -40,33 +32,11 @@ struct Payloads: Decodable {
     var text: String = ""
     var publicationDate: DateInMilliseconds
     var bankInfoTypeId: Int = 0
-    
-//    init?(json: [String: AnyHashable]) {
-//        guard
-//            let id = json["id"] as? String,
-//            let name = json["name"] as? String,
-//            let text = json["text"] as? String,
-//            let bankInfoTypeId = json["bankInfoTypeId"] as? Int,
-//            let publicationDate = json["publicationDate"] as? DateInMilliseconds else { return nil }
-//
-//        self.id = id
-//        self.name = name
-//        self.text = text
-//        self.bankInfoTypeId = bankInfoTypeId
-//        self.publicationDate = publicationDate
-//    }
 }
 
 struct DateInMilliseconds: Decodable {
 //    milliseconds: 1513767691000
-    var milliseconds: Double
-    
-//    init?(json: [String: AnyHashable]) {
-//        guard
-//            let milliseconds = json["milliseconds"] as? Double else { return nil }
-//
-//        self.milliseconds = milliseconds
-//    }
+    var milliseconds: Double = 1
 }
 
 // All

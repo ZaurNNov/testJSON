@@ -71,7 +71,7 @@ struct BodyPayloads: Decodable {
     var creationDate: DateInMilliseconds
     var lastModificationDate: DateInMilliseconds
     var content: String = ""
-    var bankInfoTypeId: Int
+    var bankInfoTypeId: Int = 1
     var typeId: String = ""
 }
 
@@ -90,7 +90,7 @@ struct BodyTitle: Decodable {
     var name: String = ""
     var text: String = ""
     var publicationDate: DateInMilliseconds
-    var bankInfoTypeId: Int = 0
+    var bankInfoTypeId: Int = 1
 }
 
 

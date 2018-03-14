@@ -13,8 +13,7 @@ class NewsTableViewController: UITableViewController {
     let jsonUrl = "https://api.tinkoff.ru/v1/news"
     let jsonDummyBodyNews = "https://api.tinkoff.ru/v1/news_content?id="
     
-    var data = News()
-    var bodyPayload = BodyPayloads()
+    var data: News?
 
     func getData(compleated: @escaping () -> ()) {
         print("** Get **")
@@ -23,12 +22,13 @@ class NewsTableViewController: UITableViewController {
         let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
             guard let data = data else { return }
             do {
-                self.data = try JSONDecoder().decode(News.self, from: data)
+                let newData = try JSONDecoder().decode(News.self, from: data)
                 
-                print ("news.resultCode: " + (self.data.resultCode))
-                print ("news.trackingId: " + (self.data.trackingId))
-                print ("news.payload.count: ", (self.data.payload.count) as Any)
+                print ("news.resultCode: " + (newData.resultCode))
+                print ("news.trackingId: " + (newData.trackingId))
+                print ("news.payload.count: ", (newData.payload.count) as Any)
                 DispatchQueue.main.async {
+                    self.data = newData
                     compleated()
                 }
                 
@@ -54,16 +54,17 @@ class NewsTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.payload.count
+        return data?.payload.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath)
         
-        // Configure the cell...
-        cell.textLabel?.text = prepareNameString(string: data.payload[indexPath.row].text)
-        cell.detailTextLabel?.text = publicationDateInString(millisec: data.payload[indexPath.row].publicationDate.milliseconds)
-
+        if let newsItem = data?.payload[indexPath.row] {
+            cell.textLabel?.text = prepareNameString(string: newsItem.text)
+            cell.detailTextLabel?.text = publicationDateInString(millisec: newsItem.publicationDate.milliseconds)
+        }
+        
         return cell
     }
     
@@ -74,17 +75,10 @@ class NewsTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let vc = segue.destination as? BodyNewsViewController, segue.identifier == "Description" {
-            if let index = self.tableView.indexPathForSelectedRow?.row {
-                vc.id = self.data.payload[index].id
-                
-            }
-            
-            
-//            vc.payload = self.data.payload[(self.tableView.indexPathForSelectedRow?.row)!]
-//            if let index = self.tableView.indexPathForSelectedRow?.row {
-//                vc.payload = data.payload[index]
-//            }
+        if let vc = segue.destination as? BodyNewsViewController,
+            segue.identifier == "Description",
+            let index = self.tableView.indexPathForSelectedRow?.row {
+            vc.id = data?.payload[index].id
         }
     }
 }

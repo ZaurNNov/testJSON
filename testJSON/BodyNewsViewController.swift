@@ -12,30 +12,30 @@ class BodyNewsViewController: UIViewController {
 
     @IBOutlet weak var BodyTitle: UILabel!
     @IBOutlet weak var BodySecondTitle: UILabel!
-    @IBOutlet weak var BodyNewsText: UILabel!
+//    @IBOutlet weak var BodyNewsText: UILabel!
+    @IBOutlet weak var BodyNewsText: UIWebView!
     
-    let jsonDummyBodyNews = "https://api.tinkoff.ru/v1/news_content?id="
-    var id = ""
-    var url: String = (self.jsonDummyBodyNews + self.id)
+    var id: String?
 
-    let jsonTestNews = "https://api.tinkoff.ru/v1/news_content?id=2143"
+    private let newsDetailUrl = "https://api.tinkoff.ru/v1/news_content?id="
     
-    var bodyPayload = BodyPayloads()
-    var bodyNews = BodyNews()
+    private var bodyNews: BodyNews?
     
-    func getData(compleated: @escaping () -> ()) {
+    private func getData(compleated: @escaping () -> ()) {
         print("** Get Body **")
-        guard let url = URL(string: jsonTestNews) else { return }
+        guard let id = id,
+            let url = URL(string: newsDetailUrl + id) else { return }
         let session = URLSession.shared
         let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
             guard let data = data else { return }
             do {
-                self.bodyNews = try JSONDecoder().decode(BodyNews.self, from: data)
+                let news = try JSONDecoder().decode(BodyNews.self, from: data)
                 
-                print ("bodyNews.resultCode: " + (self.bodyNews.resultCode))
-                print ("bodyNews.trackingId: " + (self.bodyNews.trackingId))
-                print ("bodyNews.payload: ", (self.bodyNews.payload) as Any)
+                print ("bodyNews.resultCode: " + (news.resultCode))
+                print ("bodyNews.trackingId: " + (news.trackingId))
+                print ("bodyNews.payload: ", (news.payload) as Any)
                 DispatchQueue.main.async {
+                    self.bodyNews = news
                     compleated()
                 }
                 
@@ -49,21 +49,17 @@ class BodyNewsViewController: UIViewController {
     func inputData() {
         getData {
             print("JSON body news parse complete")
+            if let content = self.bodyNews?.payload {
+                self.BodyNewsText.loadHTMLString(content.content, baseURL: nil)
+                self.BodyTitle.text = prepareNameString(string: content.title.text)
+                self.BodySecondTitle.text = publicationDateInString(millisec: content.lastModificationDate.milliseconds)
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         inputData()
-        
-        if let structur = bodyPayload {
-            BodyTitle.text = structur.title.text
-            BodySecondTitle.text = "LastModificationDate: " + publicationDateInString(millisec: structur.lastModificationDate.lastModificationDate.milliseconds)
-            BodyNewsText.text = structur.content
-            
-        }
+
     }
-
-    
-
 }
