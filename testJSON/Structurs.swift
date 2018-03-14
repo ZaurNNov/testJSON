@@ -14,13 +14,13 @@ struct JNews {
     //"payload":[]
     var resultCode: String
     var trackingId: String
-    var playload: [String: JPlayloads]
+    var payload: [JPayloads]
     
-    init(resultCode: String, trackingId: String, playload: [String: JPlayloads]) {
+    init(resultCode: String, trackingId: String, payload: [JPayloads]) {
         //default init struct
         self.resultCode = resultCode
         self.trackingId = trackingId
-        self.playload = playload
+        self.payload = payload
     }
 }
 
@@ -29,20 +29,20 @@ extension JNews: Decodable {
         // declaring our keys
         case resultCode = "resultCode"
         case trackingId = "trackingId"
-        case playload = "playload"
+        case payload = "payload"
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: MyStructKeys.self) // defining our (keyed) container
         let resultCode: String = try container.decode(String.self, forKey: .resultCode) // extracting the data
         let trackingId: String = try container.decode(String.self, forKey: .trackingId) // extracting the data
-        let playload: [String: JPlayloads] = try container.decode([String: JPlayloads].self, forKey: .playload)
+        let payload: [JPayloads] = try container.decode([JPayloads].self, forKey: .payload)
         
-        self.init(resultCode: resultCode, trackingId: trackingId, playload: playload) // initializing our struct
+        self.init(resultCode: resultCode, trackingId: trackingId, payload: payload) // initializing our struct
     }
 }
 
-struct JPlayloads {
+struct JPayloads {
     //    id: "10024",
     //    name: "20122017-tinkoff-bank-x-mgu",
     //    text: "Тинькофф Банк начинает сотрудничество с кафедрой математических и компьютерных методов анализа мехмата МГУ",
@@ -65,7 +65,7 @@ struct JPlayloads {
     }
 }
 
-extension JPlayloads: Decodable {
+extension JPayloads: Decodable {
     enum MyStructKeys: String, CodingKey {
         case id = "id"
         case name = "name"

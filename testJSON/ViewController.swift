@@ -37,15 +37,18 @@ class ViewController: UIViewController {
         let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
             guard let data = data else { return }
             do {
-                //let news = try JSONSerialization.jsonObject(with: data, options: [])
-                //print(news)
+//                let news = try JSONSerialization.jsonObject(with: data, options: [])
+//                print(news)
                 
-//                let new = try JSONDecoder().decode(News.self, from: data)
+                let jnew = try JSONDecoder().decode(News.self, from: data)
 //                print("\(new)")
                 
-                let jnew = try JSONDecoder().decode(JNews.self, from: data)
-                print("\(jnew)")
+//                let jnew = try JSONDecoder().decode(JNews.self, from: data)
+                //print("\(jnew)")
                 
+                print ("jnew.resultCode: " + jnew.resultCode)
+                print ("jnew.trackingId: " + jnew.trackingId)
+                print ("jnew.payload.count: ", jnew.payload.count)
                 
             } catch {
                 print("*** Some wrong! + \(error)")
