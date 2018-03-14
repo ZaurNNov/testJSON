@@ -14,9 +14,9 @@ struct JNews {
     //"payload":[]
     var resultCode: String
     var trackingId: String
-    var playload: [AnyHashable]
+    var playload: [String: JPlayloads]
     
-    init(resultCode: String, trackingId: String, playload: [AnyHashable]) {
+    init(resultCode: String, trackingId: String, playload: [String: JPlayloads]) {
         //default init struct
         self.resultCode = resultCode
         self.trackingId = trackingId
@@ -36,7 +36,7 @@ extension JNews: Decodable {
         let container = try decoder.container(keyedBy: MyStructKeys.self) // defining our (keyed) container
         let resultCode: String = try container.decode(String.self, forKey: .resultCode) // extracting the data
         let trackingId: String = try container.decode(String.self, forKey: .trackingId) // extracting the data
-        let playload: [AnyHashable] = try container.decode([AnyHashable].self, forKey: .playload)
+        let playload: [String: JPlayloads] = try container.decode([String: JPlayloads].self, forKey: .playload)
         
         self.init(resultCode: resultCode, trackingId: trackingId, playload: playload) // initializing our struct
     }
@@ -53,10 +53,10 @@ struct JPlayloads {
     var id: String
     var name: String
     var text: String
-    var publicationDate: [AnyHashable]
+    var publicationDate: JDateInMilliseconds
     var bankInfoTypeId: Int
     
-    init(id: String, name: String, text: String, bankInfoTypeId: Int, publicationDate: [AnyHashable]) {
+    init(id: String, name: String, text: String, bankInfoTypeId: Int, publicationDate: JDateInMilliseconds) {
         self.id = id
         self.name = name
         self.text = text
@@ -80,21 +80,31 @@ extension JPlayloads: Decodable {
         let name: String = try container.decode(String.self, forKey: .name)
         let text: String = try container.decode(String.self, forKey: .text)
         let bankInfoTypeId: Int = try container.decode(Int.self, forKey: .bankInfoTypeId)
-        let publicationDate: [AnyHashable] = try container.decode([AnyHashable].self, forKey: .publicationDate)
+        let publicationDate: JDateInMilliseconds = try container.decode(JDateInMilliseconds.self, forKey: .publicationDate)
         
-        self.init(id: id, name: name, name: name, text: text, bankInfoTypeId: bankInfoTypeId, publicationDate: publicationDate) // initializing our struct
+        self.init(id: id, name: name, text: text, bankInfoTypeId: bankInfoTypeId, publicationDate: publicationDate) // initializing our struct
     }
 }
 
-//struct JDateInMilliseconds: Decodable {
-//    //    milliseconds: 1513767691000
-//    var milliseconds: Double
-//
-//    init?(json: [String: AnyHashable]) {
-//        guard
-//            let milliseconds = json["milliseconds"] as? Double else { return nil }
-//
-//        self.milliseconds = milliseconds
-//    }
-//}
+struct JDateInMilliseconds {
+    //    milliseconds: 1513767691000
+    var milliseconds: Double
+    
+    init(milliseconds: Double) {
+        self.milliseconds = milliseconds
+    }
+}
+
+extension JDateInMilliseconds: Decodable {
+    enum MyStructKeys: String, CodingKey {
+        case milliseconds = "milliseconds"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: MyStructKeys.self)
+        let milliseconds: Double = try container.decode(Double.self, forKey: .milliseconds)
+        
+        self.init(milliseconds: milliseconds)
+    }
+}
 

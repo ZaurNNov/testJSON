@@ -40,8 +40,11 @@ class ViewController: UIViewController {
                 //let news = try JSONSerialization.jsonObject(with: data, options: [])
                 //print(news)
                 
-                let new = try JSONDecoder().decode(News.self, from: data)
-                print("\(new)")
+//                let new = try JSONDecoder().decode(News.self, from: data)
+//                print("\(new)")
+                
+                let jnew = try JSONDecoder().decode(JNews.self, from: data)
+                print("\(jnew)")
                 
                 
             } catch {
